@@ -40,7 +40,7 @@
 
 @implementation NSData (AFBaseConversion)
 
-+ (id)dataWithBase32String:(NSString *)encoded {
++ (instancetype)dataWithBase32String:(NSString *)encoded {
 	NSParameterAssert(encoded != nil);
 	if (![encoded canBeConvertedToEncoding:NSASCIIStringEncoding]) return nil;
 	
@@ -231,7 +231,7 @@
 // Original development by Dave Winer.
 //
 
-+ (id)dataWithBase64String:(NSString *)encoded {
++ (instancetype)dataWithBase64String:(NSString *)encoded {
 	NSParameterAssert(encoded != nil);
 	if (![encoded canBeConvertedToEncoding:NSASCIIStringEncoding]) return nil;
 	
@@ -346,7 +346,7 @@
 	return result;
 }
 
-+ (id)dataWithHexString:(NSString *)encoded {
++ (instancetype)dataWithHexString:(NSString *)encoded {
 	[self doesNotRecognizeSelector:_cmd];
 	return nil;
 }
