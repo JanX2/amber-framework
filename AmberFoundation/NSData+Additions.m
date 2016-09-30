@@ -288,7 +288,7 @@
 		}
 	}
 	
-	return mutableData;
+	return [mutableData copy];
 }
 
 - (NSString *)base64String {
@@ -343,7 +343,7 @@
 		charsonline += 4;
 	}
 	
-	return result;
+	return [result copy];
 }
 
 + (instancetype)dataWithHexString:(NSString *)encoded {
@@ -358,7 +358,7 @@
 	for (NSUInteger index = 0; index < [self length]; index++)
 		[hexString appendFormat:@"%02x", *(uint8_t *)(bytes+index), nil];
 	
-	return hexString;
+	return [hexString copy];
 }
 
 @end
