@@ -40,7 +40,7 @@
 
 @implementation NSData (AFBaseConversion)
 
-+ (id)dataWithBase32String:(NSString *)encoded {
++ (instancetype)dataWithBase32String:(NSString *)encoded {
 	NSParameterAssert(encoded != nil);
 	if (![encoded canBeConvertedToEncoding:NSASCIIStringEncoding]) return nil;
 	
@@ -231,7 +231,7 @@
 // Original development by Dave Winer.
 //
 
-+ (id)dataWithBase64String:(NSString *)encoded {
++ (instancetype)dataWithBase64String:(NSString *)encoded {
 	NSParameterAssert(encoded != nil);
 	if (![encoded canBeConvertedToEncoding:NSASCIIStringEncoding]) return nil;
 	
@@ -288,7 +288,7 @@
 		}
 	}
 	
-	return mutableData;
+	return [mutableData copy];
 }
 
 - (NSString *)base64String {
@@ -343,10 +343,10 @@
 		charsonline += 4;
 	}
 	
-	return result;
+	return [result copy];
 }
 
-+ (id)dataWithHexString:(NSString *)encoded {
++ (instancetype)dataWithHexString:(NSString *)encoded {
 	[self doesNotRecognizeSelector:_cmd];
 	return nil;
 }
@@ -358,7 +358,7 @@
 	for (NSUInteger index = 0; index < [self length]; index++)
 		[hexString appendFormat:@"%02x", *(uint8_t *)(bytes+index), nil];
 	
-	return hexString;
+	return [hexString copy];
 }
 
 @end
